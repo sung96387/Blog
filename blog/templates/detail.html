@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container jumbotron">
+        <h2>{{ blog.title }}</h1>
+        <p>{{ blog.pub_date }}</p>
+        <p>{{ blog.body }}</p>
+        <a href="{% url 'home' %}">돌아가기</a>
+    </div>
+
+<form action="/blog/comentcreate/{{ blog.id }}" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="coment_content">댓글</label>
+        <textarea name = "coment_content" id = "coment_content" cols ="30" rows="10"></textarea>
+    </div>
+    <button type ="submit">댓글쓰기</button>
+</form>
+{% for c in coment %}
+<div>
+<form action="/blog/comentdelete/{{ c.id }}" method="POST">
+    {% csrf_token %}
+    <p>{{c.content}}</p>
+    <button type="submit"> 삭제하기 </button>
+    <p>{{c.created_at}}</p>
+</div>
+{% endfor %}
+{% endblock %}

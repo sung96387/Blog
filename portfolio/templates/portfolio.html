@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
+
+    <title>Album example for Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+         
+        </div>
+      </div>
+
+    </header>
+    {% extends 'base.html' %}
+    {% block content %}
+{% load staticfiles %}
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+        
+          <h1 class="jumbotron-heading">My Portfolio</h1>
+          <p class="lead text-muted">멋쟁이 사자처럼 7기 인하대학교 최성현의 Portfolio.</p>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <img src="{% static 'screen.png' %}" alt=""style="max-width: 100%; height: auto;">
+                 <div class="card-body">
+                  <p class="card-text"> 부연설명.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+ {% for portfolio in portfolios.all %}
+	    <div class="col-md-4">
+	      <div class="card mb-4 shadow-sm">
+	        <img class="card-img-top" src="{{ portfolio.image.url }}" alt=" Card image cap" style="max-width: 100%; height: auto;">
+	        <div class="card-body">
+	          <h4>{{ portfolio.title }}</h4>
+	          <p class="card-text">{{ portfolio.description }}</p>
+	        </div>
+	      </div>
+	    </div>
+    {% endfor %}
+          </div>
+        </div>
+      </div>
+
+
+
+    </main>
+{% endblock %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+  </body>
+</html>
